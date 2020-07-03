@@ -17,13 +17,12 @@ RUN make build
 
 FROM golang:1.14-alpine as final
 
-COPY --from=build /lego/dist/lego .
-
 RUN apk add bash
 
+WORKDIR /lego
+
+COPY --from=build /lego/dist/lego /lego
 COPY passport.json /root/.h1/
 COPY test.sh /lego/
-
-WORKDIR /lego
 
 CMD [ "/bin/bash", "test.sh" ]
