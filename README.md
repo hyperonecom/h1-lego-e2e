@@ -1,5 +1,7 @@
 # h1-lego-e2e
 
+[![Build Status](https://travis-ci.com/hyperonecom/h1-lego-e2e.svg?branch=master)](https://travis-ci.com/hyperonecom/h1-lego-e2e)
+
 This repo contains tests for [Lego](https://github.com/go-acme/lego) integration
 with [HyperOne](https://www.hyperone.com/) DNS provider.
 
