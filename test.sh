@@ -1,3 +1,5 @@
+#!/bin/bash
+
 runLegoForDomain() {
     local ADDITIONAL_PARAMS=$1
 
@@ -7,7 +9,7 @@ runLegoForDomain() {
     --domains="example.com" \
     --dns.resolvers="ns-01.hyperone-dns.com" \
     --accept-tos \
-    $ADDITIONAL_PARAMS \
+    "$ADDITIONAL_PARAMS" \
     run
 }
 
