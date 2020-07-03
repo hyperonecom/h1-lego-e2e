@@ -30,3 +30,19 @@ Aviable arguments:
 - `LEGO_OWNER`- github account with Lego repository
 - `LEGO_REPO_NAME`- name of repository containing Lego
 - `LEGO_BRANCH`- branch to be pulled when building image
+
+### Specifying domain to be checked
+
+You are able to override default domain to be checked by passing `BASE_URL`
+environment variable to container.
+
+Example:
+
+```shell
+docker run -e BASE_URL="you-custom-url.domain" <container tag/id>
+```
+
+The application issues certificated for:
+
+- `"$BASE_URL"`
+- `"*.wildcard.$BASE_URL"`

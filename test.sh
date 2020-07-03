@@ -69,7 +69,10 @@ runCertificateTests() {
     fi
 }
 
-BASE_URL="jakub.dwa-skladniki.pl"
+if [ -z "$BASE_URL" ]
+then
+    BASE_URL="jakub.dwa-skladniki.pl"
+fi
 
 SINGLE_DOMAIN_INPUT=$BASE_URL
 WILDCARD_INPUT="*.wildcard.$BASE_URL"
