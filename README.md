@@ -42,7 +42,7 @@ Example:
 docker run -e BASE_URL="you-custom-url.domain" <container tag/id>
 ```
 
-The application issues certificated for:
+The application issues certificates for:
 
 - `"$BASE_URL"`
 - `"*.wildcard.$BASE_URL"`
