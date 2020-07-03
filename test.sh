@@ -13,7 +13,8 @@ runLego() {
 
 runOpenSSL() {
     local CERT_NAME="${1//\*/_}" # replace "*"" with "_" for wildcards
-    openssl verify "/lego/.lego/certificates/$CERT_NAME.crt"
+    local CERT_PATH="/lego/.lego/certificates/$CERT_NAME.crt"
+    openssl verify -partial_chain -trusted "$CERT_PATH" "$CERT_PATH"
 }
 
 checkDomain() { 
@@ -34,7 +35,7 @@ checkCertificate() {
     echo "Successfully verified certificate for $1"
     else
     echo "Could not verify certificate for $1"
-    ((DOMAIN_TESTS_FAILED++))
+    ((CERTIFICATE_TESTS_FAILED++))
     fi
 
     ((CERTIFICATE_TESTS_COMPLETED++))
