@@ -1,9 +1,10 @@
 FROM golang:1.14-alpine as build
 
 ENV GO111MODULE="on"
-ENV LEGO_OWNER="kuskoman"
-ENV LEGO_REPO_NAME="lego"
-ENV LEGO_BRANCH="hyperone"
+
+ARG LEGO_OWNER="kuskoman"
+ARG LEGO_REPO_NAME="lego"
+ARG LEGO_BRANCH="hyperone"
 
 RUN apk add make git
 
