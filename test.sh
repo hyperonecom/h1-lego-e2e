@@ -12,7 +12,7 @@ runLego() {
 }
 
 runOpenSSL() {
-    local CERT_NAME="${1//\*/_}"
+    local CERT_NAME="${1//\*/_}" # replace "*"" with "_" for wildcards
     openssl verify "/lego/.lego/certificates/$CERT_NAME.crt"
 }
 
