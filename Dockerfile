@@ -17,7 +17,7 @@ RUN make build
 
 FROM golang:1.14-alpine as final
 
-RUN apk add bash
+RUN apk add bash openssl
 
 WORKDIR /lego
 
