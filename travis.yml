@@ -1,0 +1,9 @@
+language: golang
+
+services:
+  - docker
+
+script:
+  - docker build . -t lego-e2e
+  - docker image inspect lego-e2e
+  - docker run lego-e2e

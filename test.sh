@@ -1,1 +1,1 @@
-echo "Works"
+./lego --server=https://acme-staging-v02.api.letsencrypt.org/directory --email="foo@bar.com" --domains="test.adam.dwa-skladniki.pl" --dns="hyperone" --dns.resolvers="ns-01.hyperone-dns.com" run
