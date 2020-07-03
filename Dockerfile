@@ -19,6 +19,8 @@ RUN make build
 
 FROM golang:1.14-alpine as final
 
+COPY passport.json /root/.h1/
+
 WORKDIR /lego
 
 COPY --from=build /lego/dist/lego .
