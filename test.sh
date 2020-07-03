@@ -7,39 +7,71 @@ runLego() {
     --dns.resolvers "ns-01.hyperone-dns.com" \
     --dns "hyperone" \
     --accept-tos \
-    --pem \
     --domains "$1" \
     run
-}   
+}
 
-checkDomains() { 
-    ((TESTS_COMPLETED++))
+runOpenSSL() {
+    local CERT_NAME="${1//\*/_}"
+    openssl verify "/lego/.lego/certificates/$CERT_NAME.crt"
+}
 
+checkDomain() { 
     if runLego "$1"
     then
-    echo "Successfuly got certificate for $1"
+    echo "Successfully got certificate for $1"
     else
     echo "Could not get certificate for $1" >&2
-    ((TESTS_FAILED++))
+    ((DOMAIN_TESTS_FAILED++))
     fi
+
+    ((DOMAIN_TESTS_COMPLETED++))
+}
+
+checkCertificate() {
+    if runOpenSSL "$1"
+    then
+    echo "Successfully verified certificate for $1"
+    else
+    echo "Could not verify certificate for $1"
+    ((DOMAIN_TESTS_FAILED++))
+    fi
+
+    ((CERTIFICATE_TESTS_COMPLETED++))
 }
 
 runDomainTests() {
-    local TESTS_COMPLETED=0
-    local TESTS_FAILED=0
-    local BASE_URL="jakub.dwa-skladniki.pl"
+    local DOMAIN_TESTS_COMPLETED=0
+    local DOMAIN_TESTS_FAILED=0
 
-    local SINGLE_DOMAIN_INPUT=$BASE_URL
-    local WILDCARD_INPUT="*.wildcard.$BASE_URL"
+    checkDomain "$SINGLE_DOMAIN_INPUT"
+    checkDomain "$WILDCARD_INPUT"
 
-    checkDomains "$SINGLE_DOMAIN_INPUT"
-    checkDomains "$WILDCARD_INPUT"
+    echo "Getting certificates finished. Failed $DOMAIN_TESTS_FAILED, total $DOMAIN_TESTS_COMPLETED."
+    if [[ "$DOMAIN_TESTS_FAILED" -ne 0 ]]
+    then
+    exit 1
+    fi
+}
 
-    echo "Getting certificates finished. Failed $TESTS_FAILED, total $TESTS_COMPLETED."
+runCertificateTests() {
+    local CERTIFICATE_TESTS_COMPLETED=0
+    local CERTIFICATE_TESTS_FAILED=0
+
+    checkCertificate "$SINGLE_DOMAIN_INPUT"
+    checkCertificate "$WILDCARD_INPUT"
+
+    echo "Checking certificates finished. Failed $CERTIFICATE_TESTS_FAILED, total $CERTIFICATE_TESTS_COMPLETED."
     if [[ "$TESTS_FAILED" -ne 0 ]]
     then
     exit 1
     fi
 }
 
+BASE_URL="jakub.dwa-skladniki.pl"
+
+SINGLE_DOMAIN_INPUT=$BASE_URL
+WILDCARD_INPUT="*.wildcard.$BASE_URL"
+
 runDomainTests
+runCertificateTests
