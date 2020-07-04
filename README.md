@@ -49,3 +49,13 @@ The application issues certificates for:
 - `"$BASE_URL"`
 - `"*.wildcard.$BASE_URL"`
 - `"$ALIAS_URL"`
+
+### Testing alias mode
+
+The application provides `$ALIAS_URL` variable for checking alias mode.
+To do it create [CNAME](https://en.wikipedia.org/wiki/CNAME_record) recordset on `_acme-challenge.$ALIAS_URL.`
+with record containing domain which has to be used for obtaining certificate.
+To avoid false-positives make sure that service account you are using with the application has NO permission
+to modify zone resources for alias domain (view permission may be required).
+
+Testing alias mode is possible thanks to `LEGO_EXPERIMENTAL_CNAME_SUPPORT=true` environment variable.
