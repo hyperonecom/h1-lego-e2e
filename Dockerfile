@@ -17,6 +17,8 @@ RUN make build
 
 FROM golang:1.14-alpine as final
 
+ENV LEGO_EXPERIMENTAL_CNAME_SUPPORT=true
+
 RUN apk add bash openssl
 
 WORKDIR /lego
