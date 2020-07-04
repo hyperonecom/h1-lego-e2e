@@ -33,18 +33,19 @@ Aviable arguments:
 - `LEGO_REPO_NAME`- name of repository containing Lego
 - `LEGO_BRANCH`- branch to be pulled when building image
 
-### Specifying domain to be checked
+### Specifying domains to be checked
 
-You are able to override default domain to be checked by passing `BASE_URL`
-environment variable to container.
+You are able to override default domain to be checked by passing
+`BASE_URL` and `ALIAS_URL` environment variables to container.
 
 Example:
 
 ```shell
-docker run -e BASE_URL="you-custom-url.domain" <container tag/id>
+docker run -e BASE_URL="you-custom-url.domain" -e ALIAS_URL="alias.domain" <container tag/id>
 ```
 
 The application issues certificates for:
 
 - `"$BASE_URL"`
 - `"*.wildcard.$BASE_URL"`
+- `"$ALIAS_URL"`

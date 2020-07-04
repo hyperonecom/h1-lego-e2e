@@ -47,6 +47,7 @@ runDomainTests() {
 
     checkDomain "$SINGLE_DOMAIN_INPUT"
     checkDomain "$WILDCARD_INPUT"
+    checkDomain "$ALIAS_INPUT"
 
     echo "Getting certificates finished. Failed $DOMAIN_TESTS_FAILED, total $DOMAIN_TESTS_COMPLETED."
     if [[ "$DOMAIN_TESTS_FAILED" -ne 0 ]]
@@ -61,6 +62,7 @@ runCertificateTests() {
 
     checkCertificate "$SINGLE_DOMAIN_INPUT"
     checkCertificate "$WILDCARD_INPUT"
+    checkCertificate "$ALIAS_INPUT"
 
     echo "Checking certificates finished. Failed $CERTIFICATE_TESTS_FAILED, total $CERTIFICATE_TESTS_COMPLETED."
     if [[ "$TESTS_FAILED" -ne 0 ]]
@@ -74,8 +76,14 @@ then
     BASE_URL="jakub.dwa-skladniki.pl"
 fi
 
+if [ -z "$ALIAS_URL" ]
+then
+    ALIAS_URL="jakub2.dwa-skladniki.pl"
+fi
+
 SINGLE_DOMAIN_INPUT=$BASE_URL
 WILDCARD_INPUT="*.wildcard.$BASE_URL"
+ALIAS_INPUT=ALIAS_URL
 
 runDomainTests
 runCertificateTests
