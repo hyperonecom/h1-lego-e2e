@@ -41,7 +41,7 @@ You are able to override default domain to be checked by passing
 Example:
 
 ```shell
-docker run -e BASE_URL="you-custom-url.domain" -e ALIAS_URL="alias.domain" <container tag/id>
+docker run -e BASE_URL="you-custom-url.domain" -e ALIAS_URL="alias.domain" <image tag/id>
 ```
 
 The application issues certificates for:
