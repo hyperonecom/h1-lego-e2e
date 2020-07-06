@@ -34,7 +34,7 @@ checkCertificate() {
     then
     echo "Successfully verified certificate for $1"
     else
-    echo "Could not verify certificate for $1"
+    echo "Could not verify certificate for $1" >&2
     ((CERTIFICATE_TESTS_FAILED++))
     fi
 
