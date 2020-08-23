@@ -66,7 +66,7 @@ runCertificateTests() {
     checkCertificate "$ALIAS_WILDCARD_INPUT"
 
     echo "Checking certificates finished. Failed $CERTIFICATE_TESTS_FAILED, total $CERTIFICATE_TESTS_COMPLETED."
-    if [[ "$TESTS_FAILED" -ne 0 ]]
+    if [[ "$CERTIFICATE_TESTS_FAILED" -ne 0 ]]
     then
     exit 1
     fi
