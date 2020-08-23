@@ -8,6 +8,7 @@ runLego() {
     --dns "hyperone" \
     --accept-tos \
     --domains "$1" \
+    --domains "$2" \
     run
 }
 
@@ -20,9 +21,9 @@ runOpenSSL() {
 checkDomain() { 
     if runLego "$1"
     then
-    echo "Successfully got certificate for $1"
+    echo "Successfully got certificate for $1 and $2"
     else
-    echo "Could not get certificate for $1" >&2
+    echo "Could not get certificate for $1 and/or $2" >&2
     ((DOMAIN_TESTS_FAILED++))
     fi
 
@@ -84,6 +85,7 @@ fi
 SINGLE_DOMAIN_INPUT=$BASE_URL
 WILDCARD_INPUT="*.$BASE_URL"
 ALIAS_INPUT=$ALIAS_URL
+ALIAS_WILDCARD_INPUT="*.$ALIAS_URL"
 
 runDomainTests
 runCertificateTests
