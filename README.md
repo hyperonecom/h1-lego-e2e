@@ -47,7 +47,7 @@ docker run -e BASE_URL="you-custom-url.domain" -e ALIAS_URL="alias.domain" <imag
 The application issues certificates for:
 
 - `"$BASE_URL"`
-- `"*.wildcard.$BASE_URL"`
+- `"*.$BASE_URL"`
 - `"$ALIAS_URL"`
 
 ### Testing alias mode
