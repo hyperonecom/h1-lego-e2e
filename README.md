@@ -49,6 +49,7 @@ The application issues certificates for:
 - `"$BASE_URL"`
 - `"*.$BASE_URL"`
 - `"$ALIAS_URL"`
+- `"*.$ALIAS_URL`
 
 ### Testing alias mode
 
