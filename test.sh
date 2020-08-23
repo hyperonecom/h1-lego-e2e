@@ -60,10 +60,9 @@ runCertificateTests() {
     local CERTIFICATE_TESTS_COMPLETED=0
     local CERTIFICATE_TESTS_FAILED=0
 
+    # as far as I understand, certificate name is dependent on first domain
     checkCertificate "$SINGLE_DOMAIN_INPUT"
-    checkCertificate "$WILDCARD_INPUT"
     checkCertificate "$ALIAS_INPUT"
-    checkCertificate "$ALIAS_WILDCARD_INPUT"
 
     echo "Checking certificates finished. Failed $CERTIFICATE_TESTS_FAILED, total $CERTIFICATE_TESTS_COMPLETED."
     if [[ "$CERTIFICATE_TESTS_FAILED" -ne 0 ]]
