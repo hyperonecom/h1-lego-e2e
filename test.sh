@@ -19,7 +19,7 @@ runOpenSSL() {
 }
 
 checkDomain() { 
-    if runLego "$1"
+    if runLego "$1" "$2"
     then
     echo "Successfully got certificate for $1 and $2"
     else
