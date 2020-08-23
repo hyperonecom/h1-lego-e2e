@@ -46,9 +46,8 @@ runDomainTests() {
     local DOMAIN_TESTS_COMPLETED=0
     local DOMAIN_TESTS_FAILED=0
 
-    checkDomain "$SINGLE_DOMAIN_INPUT"
-    checkDomain "$WILDCARD_INPUT"
-    checkDomain "$ALIAS_INPUT"
+    checkDomain "$SINGLE_DOMAIN_INPUT" "$WILDCARD_INPUT"
+    checkDomain "$ALIAS_INPUT" "$ALIAS_WILDCARD_INPUT"
 
     echo "Getting certificates finished. Failed $DOMAIN_TESTS_FAILED, total $DOMAIN_TESTS_COMPLETED."
     if [[ "$DOMAIN_TESTS_FAILED" -ne 0 ]]
@@ -64,6 +63,7 @@ runCertificateTests() {
     checkCertificate "$SINGLE_DOMAIN_INPUT"
     checkCertificate "$WILDCARD_INPUT"
     checkCertificate "$ALIAS_INPUT"
+    checkCertificate "$ALIAS_WILDCARD_INPUT"
 
     echo "Checking certificates finished. Failed $CERTIFICATE_TESTS_FAILED, total $CERTIFICATE_TESTS_COMPLETED."
     if [[ "$TESTS_FAILED" -ne 0 ]]
