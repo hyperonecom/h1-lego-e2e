@@ -2,9 +2,9 @@ FROM golang:1.14-alpine as build
 
 ENV GO111MODULE="on"
 
-ARG LEGO_OWNER="kuskoman"
+ARG LEGO_OWNER="go-acme"
 ARG LEGO_REPO_NAME="lego"
-ARG LEGO_BRANCH="hyperone"
+ARG LEGO_BRANCH="master"
 
 RUN apk add make git
 
