@@ -27,7 +27,7 @@ You use this project with custom github repository and branch.
 To do that provide custom [build arguments](https://docs.docker.com/engine/reference/commandline/build/#options)
 when building the image.
 
-Aviable arguments:
+Available arguments:
 
 - `LEGO_OWNER`- github account with Lego repository
 - `LEGO_REPO_NAME`- name of repository containing Lego
