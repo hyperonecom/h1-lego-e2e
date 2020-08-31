@@ -73,12 +73,12 @@ runCertificateTests() {
 
 if [ -z "$BASE_URL" ]
 then
-    BASE_URL="jakub.dwa-skladniki.pl"
+    BASE_URL="h1-lego.dwa-skladniki.pl"
 fi
 
 if [ -z "$ALIAS_URL" ]
 then
-    ALIAS_URL="jakub2.dwa-skladniki.pl"
+    ALIAS_URL="h1-lego-2.dwa-skladniki.pl"
 fi
 
 SINGLE_DOMAIN_INPUT=$BASE_URL
